@@ -7,6 +7,9 @@ const cors = require("cors")
 const expressValidator = require('express-validator')
 require('dotenv').config();
 
+const sgMail = require("@sendgrid/mail");
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
 
 // import routes
 const authRoutes = require("./routes/auth")
@@ -15,6 +18,7 @@ const categoryRoutes = require("./routes/category")
 const productRoutes = require("./routes/product")
 const brainTreeRoutes = require("./routes/braintree")
 const orderRoutes = require("./routes/order")
+const sendGridRoutes = require("./routes/sendGrid")
 
 // app
 
@@ -42,6 +46,7 @@ app.use("/api", categoryRoutes);
 app.use("/api", productRoutes);
 app.use("/api", brainTreeRoutes)
 app.use("/api", orderRoutes)
+app.use("/api", sendGridRoutes)
 
 const port = process.env.PORT || 8000
 
