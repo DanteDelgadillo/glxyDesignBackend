@@ -16,6 +16,11 @@ exports.orderById = (req, res, next, id) => {
 }
 
 
+exports.read = (req, res) => {
+    res.json(req.order)
+}
+
+
 exports.create = (req, res) => {
     //     console.log("create oder", req.body)
     req.body.order.user = req.profile
